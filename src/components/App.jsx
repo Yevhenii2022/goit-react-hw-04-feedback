@@ -17,7 +17,8 @@ const App = () => {
   const [bad, setBad] = useState(0);
 
   const countTotalFeedback = () => {
-    return [good, neutral, bad].reduce((total, val) => total + val, 0);
+    // return [good, neutral, bad].reduce((total, val) => total + val, 0);
+    return good + neutral + bad;
   };
 
   const countPositiveFeedbackPercentage = () => {
@@ -28,15 +29,15 @@ const App = () => {
   const onLeaveFeedback = option => {
     switch (option) {
       case optionList.good:
-        setGood(good + 1);
+        setGood(prev => prev + 1);
         break;
 
       case optionList.neutral:
-        setNeutral(neutral + 1);
+        setNeutral(prev => prev + 1);
         break;
 
       case optionList.bad:
-        setBad(bad + 1);
+        setBad(prev => prev + 1);
         break;
 
       default:
